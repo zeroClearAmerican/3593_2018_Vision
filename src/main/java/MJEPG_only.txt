@@ -1,0 +1,23 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.wpi.cscore.*; 
+
+public class Main {
+		
+	public static void main(String[] args) {
+	    // This stores our reference to our mjpeg server for streaming the input image
+        MjpegServer frontCamStream = new MjpegServer("FrontCam MJPEG", 1185);
+
+        // Init USB Camera
+        UsbCamera frontCamera = new UsbCamera("FrontCam", 0);
+        frontCamera.setVideoMode(VideoMode.PixelFormat.kMJPEG, 1280, 720, 60);
+        frontCamStream.setSource(frontCamera);
+
+        System.out.println(">> Camera setup complete");
+        System.out.println(">> Front Camera MJPEG created on 1185");	    
+        
+        // Keep the server going
+	    while (true) { }			
+      }
+}
